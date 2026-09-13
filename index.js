@@ -8,10 +8,7 @@ app.get('/', (req, res) => {
   res.send('Server is running')
 })
 
-
 // mongodb drivers codes
-
-
 const uri = process.env.MONGODB_URI
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -28,15 +25,10 @@ async function run() {
     // Connect the client to the server	(optional starting in v4.7)
     await client.connect();
 
-
     // collections
     const database=db.client('khalekuzzaman')
     const skillCollection=database.collection('skills')
     const projectCollection=database.collection('projects')
-
-
-
-
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
@@ -47,9 +39,6 @@ async function run() {
   }
 }
 run().catch(console.dir);
-
-
-
 
 
 app.listen(port, () => {
