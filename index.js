@@ -1,11 +1,15 @@
 const express = require('express');
+const cors=require('cors')
 const app = express()
 const port = 5000
 const { MongoClient, ServerApiVersion } = require('mongodb');
 require('dotenv').config()
+app.use(cors())
+app.use(express.json())
+
 
 app.get('/', (req, res) => {
-  res.send('Server is running')
+  res.send('Server is working.....')
 })
 
 // mongodb drivers codes
@@ -26,9 +30,24 @@ async function run() {
     await client.connect();
 
     // collections
-    const database=db.client('khalekuzzaman')
-    const skillCollection=database.collection('skills')
-    const projectCollection=database.collection('projects')
+    
+    const database=client.db('khalekuzzaman')
+    const skillCollection=database.collection("skills")
+    const projectCollection=database.collection("Projects")
+
+
+    // post skill
+
+    app.post('/api/skill/post',async(req,res)=>{
+      const skill=req.body
+      const result=await skillCollection.insertOne(skill)
+      res.send(result)
+    })
+
+    // post project
+    app.post('/api/project/post',async(req,res)=>{
+     
+    })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
