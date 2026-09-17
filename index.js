@@ -34,6 +34,7 @@ async function run() {
     const database=client.db('khalekuzzaman')
     const skillCollection=database.collection("skills")
     const projectCollection=database.collection("Projects")
+    const certificateCollection=database.collection("certificate")
 
 
     // post skill
@@ -46,8 +47,17 @@ async function run() {
 
     // post project
     app.post('/api/project/post',async(req,res)=>{
-     
+     const project=req.body
+     const result=await projectCollection.insertOne(project)
+     res.send(result)
     })
+
+    //post certificate
+    app.post('/api/certificate/post',async(req,res)=>{
+      const certificate= req.body
+      const result=await certificateCollection.insertOne(certificate)
+      res.send(result)
+    }) 
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
