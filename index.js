@@ -34,7 +34,16 @@ async function run() {
     const database=client.db('khalekuzzaman')
     const skillCollection=database.collection("skills")
     const projectCollection=database.collection("Projects")
-    const certificateCollection=database.collection("certificate")
+    const certificateCollection=database.collection("certificates")
+    const expericenceCollection=database.collection("expericences")
+
+
+    // post expericence
+    app.post('api/experience/post',async(req,res)=>{
+      const expericence=req.body
+      const result=await expericenceCollection.insertOne(expericence);
+      res.send(result);
+    })
 
 
     // post skill
