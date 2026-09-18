@@ -38,7 +38,7 @@ async function run() {
     const expericenceCollection=database.collection("expericences")
 
     // post expericence
-    app.post('api/experience/post',async(req,res)=>{
+    app.post('/api/experience/post',async(req,res)=>{
       const expericence=req.body
       const result=await expericenceCollection.insertOne(expericence);
       res.send(result);
