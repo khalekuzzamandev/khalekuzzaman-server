@@ -52,11 +52,18 @@ async function run() {
       res.send(result)
     })
 
+
+
     // post project
     app.post('/api/project/post',async(req,res)=>{
      const project=req.body
      const result=await projectCollection.insertOne(project)
      res.send(result)
+    })
+    // get project
+    app.get('/api/project/get',async(req,res)=>{
+      const result=await projectCollection.find().toArray()
+      res.send(result)
     })
 
     //post certificate
