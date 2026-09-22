@@ -52,6 +52,14 @@ async function run() {
       res.send(result)
     })
 
+    // get frontend skill
+    app.get('/api/frontendskill/get',async(req,res)=>{
+      const result=await skillCollection.find({category:'Frontend'}).toArray()
+      res.send(result)
+
+    })
+
+  
 
 
     // post project
