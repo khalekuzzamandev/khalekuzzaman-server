@@ -58,6 +58,13 @@ async function run() {
       res.send(result)
 
     })
+    // get backend skill
+    app.get('/api/backendskill/get',async(req,res)=>{
+      const result=await skillCollection.find({category:'Backend'}).toArray()
+      res.send(result)
+
+    })
+  
 
   
 
