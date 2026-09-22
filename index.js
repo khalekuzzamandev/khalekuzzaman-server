@@ -64,8 +64,13 @@ async function run() {
       res.send(result)
 
     })
-  
+    // get database skill
+    app.get('/api/databaseskill/get',async(req,res)=>{
+      const result=await skillCollection.find({category:'Database'}).toArray()
+      res.send(result)
 
+    })
+ 
   
 
 
