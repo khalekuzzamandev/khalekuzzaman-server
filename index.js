@@ -70,7 +70,13 @@ async function run() {
       res.send(result)
 
     })
- 
+    // get tools skill
+    app.get('/api/toolskill/get',async(req,res)=>{
+      const result=await skillCollection.find({category:'Tools'}).toArray()
+      res.send(result)
+
+    })
+
   
 
 
